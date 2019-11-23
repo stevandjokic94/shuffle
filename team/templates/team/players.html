@@ -1,0 +1,31 @@
+{% extends 'team/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Shuffle Players</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row d-flex justify-content-between" align="center">
+        {% for player in all_players %}
+            {% if player.current %}
+            <div class="card col-md-3">
+                    <a href="{% url 'team:detail' player.slug %}">
+                      <div class="inner">
+                        <img src="{{ player.image.url }}" class="card-img-top">
+                      </div>
+                    </a>
+                <div class="card-body" align="left">
+                  <a href="{% url 'team:detail' player.slug %}">
+                    <h5 class="card-title">{{ player.name }}</h5>
+                  </a>
+                  <small class="text-muted">#{{ player.number }} &nbsp;{{ player.position }}</small><br>
+                  <small class="text-muted">Height: {{ player.height }}</small>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

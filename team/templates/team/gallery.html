@@ -1,0 +1,6 @@
+<h1>{{ player.name }}</h1>
+<ul>
+{% for game in player.game_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>

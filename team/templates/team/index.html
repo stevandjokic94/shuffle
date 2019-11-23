@@ -1,0 +1,323 @@
+{% extends 'team/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Shuffle Basketball</title>
+{% endblock %}
+
+{% block body %}
+  <!-- TELEFON -->
+<div class="container">
+    <div class="jumbotron d-md-none">
+        <h4 align="center" data-aos="fade-up" data-aos-duration="1500">
+          PERFORMANCE OF THE GAME
+        </h4>
+        <h5 align="center"  data-aos="fade-up" data-aos-duration="1500">
+            <a href="{% url 'team:game-stats' latest_game.pk %}">
+                {{ latest_game.home }} {{ latest_game.home_score }} : {{ latest_game.away }} {{ latest_game.away_score }}
+            </a>
+        </h5>
+        <div class="row">
+          <div class="col-4">
+            <a href="{% url 'team:detail' mvp.player.slug %}">
+                <h5 data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300" align="center">
+                  {{ mvp.player }}
+                </h5>
+                <img src="{{ mvp.player.image.url }}" class="img-fluid" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600" align="center">
+            </a>
+          </div>
+          <!-- LOGO -->
+          <div class="col-4">
+            <br><br>
+            <img src="{% static 'team/docs/logo.png' %}" class="img-fluid" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
+          </div>
+          <div class="col-4">
+            <br>
+            <span class="count phone">{{ mvp.points }}</span> <span class="phone">POINTS</span><br>
+            <span class="count phone">{{ mvp.tot_reb }}</span> <span class="phone">REB<br></span>
+            <span class="count phone">{{ mvp.assists }}</span> <span class="phone">ASS<br></span>
+            <span class="count phone">{{ mvp.pir }}</span> <span class="phone">PIR</span>
+          </div>
+        </div>
+    </div>
+    <!-- KOMP -->
+    <div class="jumbotron d-none d-md-block">
+      <h1 align="center" data-aos="fade-up" data-aos-duration="1500">
+        PERFORMANCE OF THE GAME
+      </h1>
+      <h5 align="center"  data-aos="fade-up" data-aos-duration="1500">
+            <a href="{% url 'team:game-stats' latest_game.pk %}">
+                {{ latest_game.home }} {{ latest_game.home_score }} : {{ latest_game.away }} {{ latest_game.away_score }}
+            </a>
+      </h5>
+      <div class="row">
+        <div class="col-4">
+          <a href="{% url 'team:detail' mvp.player.slug %}">
+                <h3 data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300" align="center">
+                  {{ mvp.player }}
+                </h3>
+                <img src="{{ mvp.player.image.url }}" class="img-fluid" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600" align="center">
+            </a>
+        </div>
+        <!-- LOGO -->
+        <div class="col-4">
+          <br><br><br><br>
+          <img src="{% static 'team/docs/logo.png' %}" class="img-fluid" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
+        </div>
+        <div class="col-4">
+          <br><br><br>
+          <h1 class="animated fadeInRight slow">
+              <span class="count">{{ mvp.points }}</span> POINTS
+          </h1>
+          <br>
+          <h1 class="animated fadeInRight slow second">
+              <span class="count">{{ mvp.tot_reb }}</span> REBOUNDS</h1>
+          <br>
+          <h1 class="animated fadeInRight slow third">
+              <span class="count">{{ mvp.assists }}</span> ASSISTS</h1>
+          <br>
+          <h1 class="animated fadeInRight slow fourth">
+              <span class="count">{{ mvp.pir }}</span> PIR</h1>
+          <br>
+        </div>
+      </div>
+    </div>
+
+<!--    STATS LEADERS-->
+    <h4>Stats Leaders</h4>
+<!--  KOMP-->
+    <div class="container d-none d-lg-block">
+        <div class="row">
+          {% for player in pts_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              data-aos-once="true">
+                <a href="#">
+                  <div class="inner">
+                    <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                  </div>
+                </a>
+            <div class="card-body">
+              <h5 class="card-title">Points</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+          {% for player in reb_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              data-aos-once="true"
+              data-aos-delay="100">
+            <div class="inner">
+                <a href="#">
+                  <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Rebounds</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+          {% for player in ass_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              data-aos-once="true"
+              data-aos-delay="200">
+            <div class="inner">
+                <a href="#">
+                  <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Assists</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+          {% for player in fg3_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              data-aos-once="true"
+              data-aos-delay="300">
+            <div class="inner">
+                <a href="#">
+                  <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Threes</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+          {% for player in stl_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              data-aos-once="true"
+              data-aos-delay="400">
+            <div class="inner">
+                <a href="#">
+                  <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Steels</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+          {% for player in blk_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              data-aos-once="true"
+              data-aos-delay="500">
+            <div class="inner">
+                <a href="#">
+                  <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Blocks</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+        </div>
+    </div>
+<!--FON-->
+    <div class="container d-lg-none">
+        <div class="row">
+          {% for player in pts_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="flip-right"
+              data-aos-duration="1500"
+              data-aos-once="true">
+            <div class="inner">
+                <a href="#">
+                  <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Points</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+          {% for player in reb_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="flip-down"
+              data-aos-duration="1500"
+              data-aos-once="true">
+            <div class="inner">
+                <a href="#">
+                  <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Rebounds</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+          {% for player in ass_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="flip-left"
+              data-aos-duration="1500"
+              data-aos-once="true">
+            <div class="inner">
+                <a href="#">
+                  <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Assists</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+          {% for player in fg3_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="flip-right"
+              data-aos-duration="1500"
+              data-aos-once="true">
+            <div class="inner">
+                <a href="#">
+                  <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Threes</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+          {% for player in stl_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="flip-up"
+              data-aos-duration="1500"
+              data-aos-once="true">
+            <div class="inner">
+                <a href="#">
+                  <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Steels</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+          {% for player in blk_leaders %}
+            {% if forloop.first %}
+          <div class="card col-lg-2 col-md-4 col-6"
+              data-aos="flip-left"
+              data-aos-duration="1500"
+              data-aos-once="true">
+            <div class="inner">
+                <a href="#">
+                  <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
+                </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Blocks</h5>
+            {% endif %}
+              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+          {% endfor %}
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+{% endblock %}

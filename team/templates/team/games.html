@@ -1,0 +1,35 @@
+{% extends 'team/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Games</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="jumbotron">
+        <h3 class="details-name" style="font-weight: bold">Player Stats</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm sortable" id="myTable">
+                  <thead>
+                    <tr align="center">
+                      <th scope="col" colspan="1">ROUND</th>
+                      <th scope="col" colspan="1">GAME</th>
+                      <th scope="col" colspan="1">OUTCOME</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for game in games %}
+                    <tr align="center">
+                      <td>{{ forloop.counter }}</td>
+                        <td><a class="game" href="{% url 'team:game-stats' game.pk %}">{{ game }}</a></td>
+                      <td>{{ game.outcome }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        <br>
+    </div>
+</div>
+{% endblock %}

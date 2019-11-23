@@ -1,0 +1,159 @@
+{% extends 'team/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>{{ player.name }}</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-3 animated flipInY slow">
+                <img class="img-fluid details-img" src="{{ player.image.url }}">
+            </div>
+            <div class="col-md-9 details">
+                <h3 class="details-name animated flipInX slow">{{ player.name }}</h3><br>
+                <small class="text-muted">Position:</small><br>
+                <h6>{{ player.position }}</h6>
+                <small class="text-muted">Number:</small><br>
+                <h6>{{ player.number }}</h6>
+                <small class="text-muted">Height:</small><br>
+                <h6>{{ player.height }}</h6>
+            </div>
+        </div>
+        <br>
+        <h3 class="details-name" style="font-weight: bold">Player Averages</h3>
+        <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm sortable" id="myTable">
+                  <thead>
+                    <tr>
+                      <th scope="col" colspan="1"></th>
+                      <th scope="col" colspan="2">OVERALL</th>
+                      <th scope="col" colspan="3">2FG</th>
+                      <th scope="col" colspan="3">3FG</th>
+                      <th scope="col" colspan="3">FT</th>
+                      <th scope="col" colspan="2">REBS</th>
+                      <th scope="col" colspan="5"></th>
+                    </tr>
+                  </thead>
+                  <thead>
+                    <tr>
+                      <th scope="col" data-firstsort="desc">MIN</th>
+                      <th scope="col" data-firstsort="desc">PTS</th>
+                      <th scope="col" data-firstsort="desc">FG%</th>
+                      <th scope="col" data-firstsort="desc">M</th>
+                      <th scope="col" data-firstsort="desc">A</th>
+                      <th scope="col" data-firstsort="desc">%</th>
+                      <th scope="col" data-firstsort="desc">M</th>
+                      <th scope="col" data-firstsort="desc">A</th>
+                      <th scope="col" data-firstsort="desc">%</th>
+                      <th scope="col" data-firstsort="desc">M</th>
+                      <th scope="col" data-firstsort="desc">A</th>
+                      <th scope="col" data-firstsort="desc">%</th>
+                      <th scope="col" data-firstsort="desc">DEF</th>
+                      <th scope="col" data-firstsort="desc">OFF</th>
+                      <th scope="col" data-firstsort="desc">ASS</th>
+                      <th scope="col" data-firstsort="desc">STL</th>
+                      <th scope="col" data-firstsort="desc">BLK</th>
+                      <th scope="col" data-firstsort="desc">TOV</th>
+                      <th scope="col" data-firstsort="desc">PIR</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{ player.avg_min }}</td>
+                      <td>{{ player.avg_pts }}</td>
+                      <td>{{ player.avg_fg }}</td>
+                      <td>{{ player.avg_2fgm }}</td>
+                      <td>{{ player.avg_2fga }}</td>
+                      <td>{{ player.avg_2fg }}</td>
+                      <td>{{ player.avg_3fgm }}</td>
+                      <td>{{ player.avg_3fga }}</td>
+                      <td>{{ player.avg_3fg }}</td>
+                      <td>{{ player.avg_ftm }}</td>
+                      <td>{{ player.avg_fta }}</td>
+                      <td>{{ player.avg_ft }}</td>
+                      <td>{{ player.avg_def_reb }}</td>
+                      <td>{{ player.avg_off_reb }}</td>
+                      <td>{{ player.avg_ass }}</td>
+                      <td>{{ player.avg_stl }}</td>
+                      <td>{{ player.avg_blk }}</td>
+                      <td>{{ player.avg_tos }}</td>
+                      <td>{{ player.avg_pir }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        <br>
+        <h3 class="details-name" style="font-weight: bold">Player Game Statistics</h3>
+        <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm sortable">
+                  <thead>
+                    <tr>
+                      <th colspan="3"></th>
+                      <th colspan="2">OVERALL</th>
+                      <th colspan="3">2FG</th>
+                      <th colspan="3">3FG</th>
+                      <th colspan="3">FT</th>
+                      <th colspan="2">REBS</th>
+                      <th colspan="5"></th>
+                    </tr>
+                  </thead>
+                  <thead>
+                    <tr>
+                      <th scope="col" data-firstsort="desc"></th>
+                      <th scope="col" data-firstsort="desc">OPPONENT</th>
+                      <th scope="col" data-firstsort="desc">MIN</th>
+                      <th scope="col" data-firstsort="desc">PTS</th>
+                      <th scope="col" data-firstsort="desc">FG%</th>
+                      <th scope="col" data-firstsort="desc">M</th>
+                      <th scope="col" data-firstsort="desc">A</th>
+                      <th scope="col" data-firstsort="desc">%</th>
+                      <th scope="col" data-firstsort="desc">M</th>
+                      <th scope="col" data-firstsort="desc">A</th>
+                      <th scope="col" data-firstsort="desc">%</th>
+                      <th scope="col" data-firstsort="desc">M</th>
+                      <th scope="col" data-firstsort="desc">A</th>
+                      <th scope="col" data-firstsort="desc">%</th>
+                      <th scope="col" data-firstsort="desc">DEF</th>
+                      <th scope="col" data-firstsort="desc">OFF</th>
+                      <th scope="col" data-firstsort="desc">ASS</th>
+                      <th scope="col" data-firstsort="desc">STL</th>
+                      <th scope="col" data-firstsort="desc">BLK</th>
+                      <th scope="col" data-firstsort="desc">TOV</th>
+                      <th scope="col" data-firstsort="desc">PIR</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for game in  player.gamestats.all %}
+                    <tr>
+                      <td>{{ forloop.counter }}</td>
+                      <td>{{ game.game.opponent }}</td>
+                      <td>{{ game.minutes }}</td>
+                      <td>{{ game.points }}</td>
+                      <td>{{ game.avg_fg }}</td>
+                      <td>{{ game.fg2m }}</td>
+                      <td>{{ game.fg2a }}</td>
+                      <td>{{ game.avg_2fg }}</td>
+                      <td>{{ game.fg3m }}</td>
+                      <td>{{ game.fg3a }}</td>
+                      <td>{{ game.avg_3fg }}</td>
+                      <td>{{ game.ftm }}</td>
+                      <td>{{ game.fta }}</td>
+                      <td>{{ game.ft }}</td>
+                      <td>{{ game.def_rebounds }}</td>
+                      <td>{{ game.off_rebounds }}</td>
+                      <td>{{ game.assists }}</td>
+                      <td>{{ game.steals }}</td>
+                      <td>{{ game.blocks }}</td>
+                      <td>{{ game.tos }}</td>
+                      <td>{{ game.pir }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+{% endblock %}
