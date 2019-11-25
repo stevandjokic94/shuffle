@@ -7,7 +7,8 @@
 
 {% block body %}
 <div class="container">
-    <div class="jumbotron">
+<!--    KOMP-->
+    <div class="jumbotron d-none d-md-block">
         <h3 class="details-name" style="font-weight: bold">Player Stats</h3>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-sm sortable" id="myTable">
@@ -24,6 +25,31 @@
                       <td>{{ forloop.counter }}</td>
                         <td><a class="game" href="{% url 'team:game-stats' game.pk %}">{{ game }}</a></td>
                       <td>{{ game.outcome }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        <br>
+    </div>
+<!--FON-->
+    <div class="jumbotron d-sm-none">
+        <h3 class="details-name" style="font-weight: bold">Player Stats</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm sortable" id="myTable">
+                  <thead>
+                    <tr align="center">
+                      <th scope="col" colspan="1">ROUND</th>
+                      <th scope="col" colspan="1">GAME</th>
+                      <th scope="col" colspan="1">OUTCOME</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for game in games %}
+                    <tr align="center">
+                        <td class="align-middle">{{ forloop.counter }}</td>
+                        <td><a class="game" href="{% url 'team:game-stats' game.pk %}">{{ game.home }}<br>{{ game.home_score }} : {{ game.away_score }}<br>{{ game.away }}</a></td>
+                      <td class="align-middle">{{ game.outcome }}</td>
                     </tr>
                   {% endfor %}
                   </tbody>

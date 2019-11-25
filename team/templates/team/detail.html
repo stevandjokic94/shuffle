@@ -33,7 +33,7 @@
                       <th scope="col" colspan="3">2FG</th>
                       <th scope="col" colspan="3">3FG</th>
                       <th scope="col" colspan="3">FT</th>
-                      <th scope="col" colspan="2">REBS</th>
+                      <th scope="col" colspan="3">REBS</th>
                       <th scope="col" colspan="5"></th>
                     </tr>
                   </thead>
@@ -53,6 +53,7 @@
                       <th scope="col" data-firstsort="desc">%</th>
                       <th scope="col" data-firstsort="desc">DEF</th>
                       <th scope="col" data-firstsort="desc">OFF</th>
+                      <th scope="col" data-firstsort="desc">TOT</th>
                       <th scope="col" data-firstsort="desc">ASS</th>
                       <th scope="col" data-firstsort="desc">STL</th>
                       <th scope="col" data-firstsort="desc">BLK</th>
@@ -76,6 +77,7 @@
                       <td>{{ player.avg_ft }}</td>
                       <td>{{ player.avg_def_reb }}</td>
                       <td>{{ player.avg_off_reb }}</td>
+                      <td>{{ player.avg_tot_reb }}</td>
                       <td>{{ player.avg_ass }}</td>
                       <td>{{ player.avg_stl }}</td>
                       <td>{{ player.avg_blk }}</td>
@@ -96,7 +98,7 @@
                       <th colspan="3">2FG</th>
                       <th colspan="3">3FG</th>
                       <th colspan="3">FT</th>
-                      <th colspan="2">REBS</th>
+                      <th colspan="3">REBS</th>
                       <th colspan="5"></th>
                     </tr>
                   </thead>
@@ -118,6 +120,7 @@
                       <th scope="col" data-firstsort="desc">%</th>
                       <th scope="col" data-firstsort="desc">DEF</th>
                       <th scope="col" data-firstsort="desc">OFF</th>
+                      <th scope="col" data-firstsort="desc">TOT</th>
                       <th scope="col" data-firstsort="desc">ASS</th>
                       <th scope="col" data-firstsort="desc">STL</th>
                       <th scope="col" data-firstsort="desc">BLK</th>
@@ -144,6 +147,7 @@
                       <td>{{ game.ft }}</td>
                       <td>{{ game.def_rebounds }}</td>
                       <td>{{ game.off_rebounds }}</td>
+                      <td>{{ game.tot_reb }}</td>
                       <td>{{ game.assists }}</td>
                       <td>{{ game.steals }}</td>
                       <td>{{ game.blocks }}</td>

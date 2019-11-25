@@ -25,7 +25,7 @@ SECRET_KEY = '##e9+di!63qem@#o9nc&x16(07=)dpde)9!%q&3@9!5a&x^h%q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shufflebasketball.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -119,6 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/shufflebasketball/shuffle/static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

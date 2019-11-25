@@ -29,7 +29,7 @@ class Game(models.Model):
         if self.home.name == 'Shuffle':
             return self.away.name
         else:
-            return self.away.name
+            return self.home.name
 
     @cached_property
     def outcome(self):
@@ -45,7 +45,8 @@ class Game(models.Model):
                 return 'W'
 
     def __str__(self):
-        return self.home.name + " " + str(self.home_score) + " : " + str(self.away_score) + " " + self.away.name
+        return self.home.name + " " + str(self.home_score) + " : " + str(self.away_score) + " " + self.away.name + " " +\
+               str(self.pk)
 
     def get_absolute_url(self):
         from django.urls import reverse
@@ -102,8 +103,8 @@ class GameStats(models.Model):
 
     minutes = models.IntegerField()
 
-    off_rebounds = models.IntegerField()
     def_rebounds = models.IntegerField()
+    off_rebounds = models.IntegerField()
     assists = models.IntegerField()
     steals = models.IntegerField()
     blocks = models.IntegerField()
@@ -122,37 +123,37 @@ class GameStats(models.Model):
 
     @cached_property
     def pir(self):
-        return 2 * self.fg2m + 3 * self.fg3m + self.ftm + self.def_rebounds + self.off_rebounds + self.assists + \
-               self.steals + self.blocks - self.tos - self.fg2a - self.fg3a - self.fta
+        return 3 * self.fg2m + 4 * self.fg3m + 2 * self.ftm + self.def_rebounds + self.off_rebounds + self.assists \
+            + self.steals + self.blocks - self.tos - self.fg2a - self.fg3a - self.fta
 
     @cached_property
     def avg_2fg(self):
         if self.fg2m == 0:
             return 0
         else:
-            return round(float(self.fg2m) / float(self.fg2a), 2) * 100
+            return round(round(float(self.fg2m) / float(self.fg2a), 3) * 100, 1)
 
     @cached_property
     def avg_3fg(self):
         if self.fg3m == 0:
             return 0
         else:
-            return round(float(self.fg3m) / float(self.fg3a), 2) * 100
+            return round(round(float(self.fg3m) / float(self.fg3a), 3) * 100, 2)
 
     @cached_property
     def avg_fg(self):
-        if self.fg2m == 0:
-            if self.fg3m == 0:
-                return 0
+        if self.fg2m == 0 and self.fg3m == 0:
+            return 0
         else:
-            return round(float(self.fg2m + self.fg3m) / float(self.fg2a + self.fg3a) * 100, 1)
+            return round(round(float(self.fg2m + self.fg3m) / float(self.fg2a + self.fg3a), 3) * 100, 1)
 
     @cached_property
     def ft(self):
         if self.ftm == 0:
             return 0
         else:
-            return round(float(self.ftm) / float(self.fta), 2) * 100
+            tot = round((float(self.ftm) / float(self.fta)), 3)
+            return round(tot * 100, 1)
 
     @cached_property
     def tot_reb(self):

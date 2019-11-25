@@ -16,6 +16,7 @@ class IndexView(generic.ListView):
         latest_game = Game.objects.order_by('-id')[0]
     except:
         latest_game = 'No games in DB'
+
     try:
         game_stats = GameStats.objects.filter(game=latest_game)
     except:
@@ -34,7 +35,9 @@ class IndexView(generic.ListView):
         for player in Player.objects.all():
             player.avg_pts = utils.get_avg_pts(player.pk)
             player.save()
-            pts_leaders.append((player, player.avg_pts))
+            if player.current:
+                if len(player.gamestats.all()) > 2:
+                    pts_leaders.append((player, player.avg_pts))
         pts_leaders.sort(key=itemgetter(1), reverse=True)
     except:
         pts_leaders = 'Not enough data for points'
@@ -45,7 +48,9 @@ class IndexView(generic.ListView):
         for player in Player.objects.all():
             player.avg_ass = utils.get_avg_ass(player.pk)
             player.save()
-            ass_leaders.append((player, player.avg_ass))
+            if player.current:
+                if len(player.gamestats.all()) > 2:
+                    ass_leaders.append((player, player.avg_ass))
         ass_leaders.sort(key=itemgetter(1), reverse=True)
     except:
         ass_leaders = 'Not enough data for assists'
@@ -55,7 +60,9 @@ class IndexView(generic.ListView):
         for player in Player.objects.all():
             player.avg_tot_reb = utils.get_avg_tot_reb(player.pk)
             player.save()
-            reb_leaders.append((player, player.avg_tot_reb))
+            if player.current:
+                if len(player.gamestats.all()) > 2:
+                    reb_leaders.append((player, player.avg_tot_reb))
         reb_leaders.sort(key=itemgetter(1), reverse=True)
     except:
         ass_leaders = 'Not enough data for rebounds'
@@ -66,7 +73,9 @@ class IndexView(generic.ListView):
         for player in Player.objects.all():
             player.avg_stl = utils.get_avg_stl(player.pk)
             player.save()
-            stl_leaders.append((player, player.avg_stl))
+            if player.current:
+                if len(player.gamestats.all()) > 2:
+                    stl_leaders.append((player, player.avg_stl))
         stl_leaders.sort(key=itemgetter(1), reverse=True)
     except:
         ass_leaders = 'Not enough data for steals'
@@ -77,7 +86,9 @@ class IndexView(generic.ListView):
         for player in Player.objects.all():
             player.avg_blk = utils.get_avg_blk(player.pk)
             player.save()
-            blk_leaders.append((player, player.avg_blk))
+            if player.current:
+                if len(player.gamestats.all()) > 2:
+                    blk_leaders.append((player, player.avg_blk))
         blk_leaders.sort(key=itemgetter(1), reverse=True)
     except:
         blk_leaders = 'Not enough data for blocks'
@@ -88,7 +99,9 @@ class IndexView(generic.ListView):
         for player in Player.objects.all():
             player.avg_3fg = utils.get_avg_3fgm(player.pk)
             player.save()
-            fg3_leaders.append((player, player.avg_3fg))
+            if player.current:
+                if len(player.gamestats.all()) > 2:
+                    fg3_leaders.append((player, player.avg_3fg))
         fg3_leaders.sort(key=itemgetter(1), reverse=True)
     except:
         fg3_leaders = 'Not enough data for threes'
@@ -124,12 +137,12 @@ class IndexView(generic.ListView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['latest_game'] = self.latest_game
         context['mvp'] = self.mvp
-        context['pts_leaders'] = self.pts_leaders
-        context['ass_leaders'] = self.ass_leaders
-        context['reb_leaders'] = self.reb_leaders
-        context['fg3_leaders'] = self.fg3_leaders
-        context['stl_leaders'] = self.stl_leaders
-        context['blk_leaders'] = self.blk_leaders
+        context['pts_leaders'] = self.pts_leaders[:5]
+        context['ass_leaders'] = self.ass_leaders[:5]
+        context['reb_leaders'] = self.reb_leaders[:5]
+        context['fg3_leaders'] = self.fg3_leaders[:5]
+        context['stl_leaders'] = self.stl_leaders[:5]
+        context['blk_leaders'] = self.blk_leaders[:5]
 
         return context
 
@@ -207,8 +220,8 @@ class GameStatsView(generic.DetailView):
 
 
 class TeamStatsView(generic.ListView):
-    model = Player
     template_name = 'team/stats.html'
+    model = Player
     context_object_name = 'players'
 
 
