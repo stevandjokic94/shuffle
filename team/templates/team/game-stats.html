@@ -11,14 +11,16 @@
         <button type="button" class="btn round">Round {{ game.pk }}, Season 19/20</button>
         <br><br>
         <div class="row">
-            <div class="col-4">
-                <h3 style="float:right">{{ game.home }}</h3>
+            <div class="col-2">
+                <img src="{{ game.home.logo.url }}" class="img-fluid">
             </div>
+            <div class="col-2"></div>
             <div class="col-4">
                 <h3 align="center">{{ game.home_score }} : {{ game.away_score }}</h3>
             </div>
-            <div class="col-4">
-                <h3 style="float:left">{{ game.away }}</h3>
+            <div class="col-2"></div>
+            <div class="col-2">
+                <img src="{{ game.away.logo.url }}" class="img-fluid">
             </div>
         </div>
         <br>
@@ -64,7 +66,7 @@
                   <tbody>
                   {% for stat in game.gamestats_set.all %}
                     <tr>
-                      <td>{{ stat.player }}</td>
+                      <td><a href="{% url 'team:detail' stat.player.slug %}" class="stats-link">{{ stat.player }}</a></td>
                       <td>{{ stat.minutes }}</td>
                       <td>{{ stat.points }}</td>
                       <td>{{ stat.avg_fg }}</td>

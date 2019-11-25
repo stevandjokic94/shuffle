@@ -51,7 +51,7 @@
                   {% for player in  players %}
                   {% if player.current %}
                     <tr>
-                      <td>{{ player.name }}</td>
+                      <td><a class="stats-link" href="{% url 'team:detail' player.slug %}">{{ player.name }}</a></td>
                       <td>{{ player.avg_min }}</td>
                       <td>{{ player.avg_pts }}</td>
                       <td>{{ player.avg_fg }}</td>

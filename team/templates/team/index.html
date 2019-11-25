@@ -94,7 +94,7 @@
               data-aos="fade-left"
               data-aos-duration="1500"
               data-aos-once="true">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <div class="inner">
                     <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                   </div>
@@ -102,7 +102,7 @@
             <div class="card-body">
               <h5 class="card-title">Points</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>
@@ -114,14 +114,14 @@
               data-aos-once="true"
               data-aos-delay="100">
             <div class="inner">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="card-body">
               <h5 class="card-title">Rebounds</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>
@@ -133,14 +133,14 @@
               data-aos-once="true"
               data-aos-delay="200">
             <div class="inner">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="card-body">
               <h5 class="card-title">Assists</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>
@@ -152,14 +152,14 @@
               data-aos-once="true"
               data-aos-delay="300">
             <div class="inner">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="card-body">
               <h5 class="card-title">Threes</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>
@@ -171,14 +171,14 @@
               data-aos-once="true"
               data-aos-delay="400">
             <div class="inner">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="card-body">
               <h5 class="card-title">Steels</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>
@@ -190,14 +190,14 @@
               data-aos-once="true"
               data-aos-delay="500">
             <div class="inner">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="card-body">
               <h5 class="card-title">Blocks</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>
@@ -213,14 +213,14 @@
               data-aos-duration="1500"
               data-aos-once="true">
             <div class="inner">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="card-body">
               <h5 class="card-title">Points</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>
@@ -231,14 +231,14 @@
               data-aos-duration="1500"
               data-aos-once="true">
             <div class="inner">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="card-body">
               <h5 class="card-title">Rebounds</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>
@@ -249,14 +249,14 @@
               data-aos-duration="1500"
               data-aos-once="true">
             <div class="inner">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="card-body">
               <h5 class="card-title">Assists</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>
@@ -267,14 +267,14 @@
               data-aos-duration="1500"
               data-aos-once="true">
             <div class="inner">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="card-body">
               <h5 class="card-title">Threes</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>
@@ -285,14 +285,14 @@
               data-aos-duration="1500"
               data-aos-once="true">
             <div class="inner">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="card-body">
               <h5 class="card-title">Steels</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>
@@ -303,14 +303,14 @@
               data-aos-duration="1500"
               data-aos-once="true">
             <div class="inner">
-                <a href="#">
+                <a href="{% url 'team:detail' player.0.slug %}">
                   <img src="{{ player.0.image.url }}" class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="card-body">
               <h5 class="card-title">Blocks</h5>
             {% endif %}
-              <a href="#"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
+              <a href="{% url 'team:detail' player.0.slug %}"><span>{{ player.0 }} </span></a><span class="float-right">{{ player.1 }}</span><br>
           {% endfor %}
             </div>
           </div>

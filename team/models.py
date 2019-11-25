@@ -59,7 +59,6 @@ class Player(models.Model):
     position = models.CharField(max_length=20)
     image = models.ImageField()
     current = models.BooleanField(default=True)
-    legend = models.BooleanField(default=False)
 
     avg_min = models.FloatField(editable=False, default=0)
     avg_pts = models.FloatField(editable=False, default=0)

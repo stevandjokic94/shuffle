@@ -46,6 +46,12 @@ h5{
 .details-img{
     margin-bottom: 10px;
 }
+.stats-link{
+    color: black !important;
+}
+.stats-link:hover{
+    color: #136BB3 !important;
+}
 thead, tfoot{
   background-color: #136BB3;
   color: white;

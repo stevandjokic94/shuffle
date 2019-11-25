@@ -129,7 +129,7 @@
                   {% for game in  player.gamestats.all %}
                     <tr>
                       <td>{{ forloop.counter }}</td>
-                      <td>{{ game.game.opponent }}</td>
+                      <td><a class="stats-link" href="{% url 'team:game-stats' game.game.pk %}">{{ game.game.opponent }}</a></td>
                       <td>{{ game.minutes }}</td>
                       <td>{{ game.points }}</td>
                       <td>{{ game.avg_fg }}</td>
