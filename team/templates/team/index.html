@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-<title>Shuffle Basketball</title>
+<title>KK Flaming Lions</title>
 {% endblock %}
 
 {% block body %}
@@ -13,7 +13,7 @@
           PERFORMANCE OF THE GAME
         </h4>
         <h5 align="center"  data-aos="fade-up" data-aos-duration="1500">
-            <a href="{% url 'team:game-stats' latest_game.pk %}">
+            <a href="{% url 'team:game-stats' latest_game.pk %}" style="color: #E84335;">
                 {{ latest_game.home }} {{ latest_game.home_score }} : {{ latest_game.away }} {{ latest_game.away_score }}
             </a>
         </h5>
@@ -46,7 +46,7 @@
         PERFORMANCE OF THE GAME
       </h1>
       <h5 align="center"  data-aos="fade-up" data-aos-duration="1500">
-            <a href="{% url 'team:game-stats' latest_game.pk %}">
+            <a href="{% url 'team:game-stats' latest_game.pk %}" style="color: #E84335;">
                 {{ latest_game.home }} {{ latest_game.home_score }} : {{ latest_game.away }} {{ latest_game.away_score }}
             </a>
       </h5>
