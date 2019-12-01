@@ -101,8 +101,6 @@ class GameStats(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     season = models.CharField(default='2019/20', max_length=20)
 
-    minutes = models.IntegerField()
-
     def_rebounds = models.IntegerField()
     off_rebounds = models.IntegerField()
     assists = models.IntegerField()
